@@ -64,12 +64,12 @@ public class GeneticAlgorithm
 
         chromosomes.sort((o1, o2) ->
                 {
-                if (o1.getRosenbrockFunctionEvaulate() > o2.getRosenbrockFunctionEvaulate())
+                if (o1.getRosenbrockFunctionEvaluate() > o2.getRosenbrockFunctionEvaluate())
                     {
                     return 1;
                     }
 
-                if (o1.getRosenbrockFunctionEvaulate() == o2.getRosenbrockFunctionEvaulate())
+                if (o1.getRosenbrockFunctionEvaluate() == o2.getRosenbrockFunctionEvaluate())
                     {
                     return 0;
                     }
@@ -86,9 +86,9 @@ public class GeneticAlgorithm
         totalInverse = 0.0;
         for (Chromosome chromosome : chromosomes)
             {
-            if (chromosome.getRosenbrockFunctionEvaulate() != 0.0 && isDone == false)
+            if (chromosome.getRosenbrockFunctionEvaluate() != 0.0 && isDone == false)
                 {
-                totalInverse += 1.0 / chromosome.getRosenbrockFunctionEvaulate();
+                totalInverse += 1.0 / chromosome.getRosenbrockFunctionEvaluate();
                 }
             else if (isDone == false)
                 {
@@ -104,7 +104,7 @@ public class GeneticAlgorithm
         probability = new ArrayList<>();
         for (Chromosome chromosome : chromosomes)
             {
-            probability.add(((1.0 / chromosome.getRosenbrockFunctionEvaulate()) / totalInverse));
+            probability.add(((1.0 / chromosome.getRosenbrockFunctionEvaluate()) / totalInverse));
             }
         }
 
@@ -212,7 +212,7 @@ public class GeneticAlgorithm
         for (Chromosome chromosome : chromosomes)
 
             {
-            values.append(chromosome.getRosenbrockFunctionEvaulate().toString());
+            values.append(chromosome.getRosenbrockFunctionEvaluate().toString());
             values.append(";");
             }
 

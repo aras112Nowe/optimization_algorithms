@@ -8,7 +8,7 @@ public class Chromosome
         {
         this.x = x;
         this.y = y;
-        evaulate = getRosenbrockFunctionEvaulate();
+        evaulate = getRosenbrockFunctionEvaluate();
         }
 
     public Integer getX()
@@ -24,16 +24,16 @@ public class Chromosome
     public void setX(Integer x)
         {
         this.x = x;
-        evaulate = getRosenbrockFunctionEvaulate();
+        evaulate = getRosenbrockFunctionEvaluate();
         }
 
     public void setY(Integer y)
         {
         this.y = y;
-        evaulate = getRosenbrockFunctionEvaulate();
+        evaulate = getRosenbrockFunctionEvaluate();
         }
 
-    public Integer getRosenbrockFunctionEvaulate()
+    public Integer getRosenbrockFunctionEvaluate()
         {
         return 100 * ((y - (x * x)) * (y - (x * x))) + ((1 - x) * (1 - x));
         }
