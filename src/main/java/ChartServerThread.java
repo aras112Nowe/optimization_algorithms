@@ -1,3 +1,5 @@
+
+
 import org.knowm.xchart.QuickChart;
 import org.knowm.xchart.SwingWrapper;
 import org.knowm.xchart.XYChart;
@@ -23,21 +25,20 @@ public class ChartServerThread implements Runnable
     XYChart chart;
     List<String> list;
     ArrayList<Double> value;
-    double[] tabY={0.0};
-    double[] tabX={0.0};
+    double[] tabY = {0.0};
+    double[] tabX = {0.0};
     JFrame swingWrapper;
-    private static Integer SLEEP_TIME=100;
+    private static Integer SLEEP_TIME = 100;
     String algorithm;
 
 
     ChartServerThread(Socket socket) throws IOException
         {
         this.socket = socket;
-        list=new ArrayList<>();
-        value=new ArrayList<>();
+        list = new ArrayList<>();
+        value = new ArrayList<>();
         init();
         }
-
 
 
     @Override
@@ -46,18 +47,17 @@ public class ChartServerThread implements Runnable
 
         String napis = readFromClient.nextLine();
 
-        if(napis.equals("GA"))
+        if (napis.equals("GA"))
             {
-            algorithm="Genetic Algorithm";
+            algorithm = "Genetic Algorithm";
             }
-        if(napis.equals("SA"))
+        if (napis.equals("SA"))
             {
-            algorithm="Simulated Annealing";
+            algorithm = "Simulated Annealing";
             }
 
         chart = QuickChart.getChart("Sample Chart", "Chromosoms", "Rosenbrock function evaulate", algorithm, tabX, tabY);
         swingWrapper = new SwingWrapper(chart).displayChart();
-
 
 
         while (readFromClient.hasNextLine())
@@ -65,7 +65,7 @@ public class ChartServerThread implements Runnable
             napis = readFromClient.nextLine();
             list = Arrays.asList(napis.split(";"));
 
-            for (String stringValue:list)
+            for (String stringValue : list)
                 {
 
                 value.add(Double.valueOf(stringValue));
@@ -73,25 +73,25 @@ public class ChartServerThread implements Runnable
                 }
 
             Integer i = 0;
-            tabY=new double[value.size()];
-            tabX=new double[value.size()];
+            tabY = new double[value.size()];
+            tabX = new double[value.size()];
 
-            for(Double curretDouble:value)
-            {
-            tabY[i]=curretDouble;
-            tabX[i]=i;
-            i++;
+            for (Double curretDouble : value)
+                {
+                tabY[i] = curretDouble;
+                tabX[i] = i;
+                i++;
 
-            }
+                }
 
-            chart.updateXYSeries(algorithm,tabX,tabY,tabX);
+            chart.updateXYSeries(algorithm, tabX, tabY, tabX);
             swingWrapper.repaint();
 
             // Create Chart
             //chart = QuickChart.getChart("Sample Chart", "Chromosom", "Rosenbrock function evaulate", "y(x)", tabX, tabY);
 
             // Show it
-           // swingWrapper = new SwingWrapper(chart).displayChart();
+            // swingWrapper = new SwingWrapper(chart).displayChart();
 
 
             try

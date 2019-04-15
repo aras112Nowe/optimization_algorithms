@@ -33,7 +33,7 @@ public class SimulatedAnnealing
 
     public void exec()
         {
-        openConetionWithChart();
+        openConnectionWithChart();
 
         while (temp > 5)
             {
@@ -42,7 +42,7 @@ public class SimulatedAnnealing
             changeChromosomeValue();
             cooledDown();
             }
-        offConetionWithChart();
+        offConnectionWithChart();
         }
 
     private void calculatePurpose()
@@ -51,7 +51,7 @@ public class SimulatedAnnealing
 
         for (Chromosome chromosome : chromosomes)
             {
-            //purposeResult.add(chromosome.getRosenbrockFunctionEvaulate());
+            //purposeResult.add(chromosome.getRosenbrockFunctionEvaluate());
             System.out.println(chromosome);
             }
         }
@@ -66,14 +66,14 @@ public class SimulatedAnnealing
             {
             newChromoseome = new Chromosome(chromosome.getX() + randValueForChromosome(), chromosome.getY() + randValueForChromosome());
 
-            if (newChromoseomeIsBetter(newChromoseome, chromosome))
+            if (newChromosomeIsBetter(newChromoseome, chromosome))
                 {
                 newChromosomes.set(position, newChromoseome);
                 System.out.println("better and change " + newChromoseome);
                 }
             else
                 {
-                Integer difference = -newChromoseome.getRosenbrockFunctionEvaulate() + chromosome.getRosenbrockFunctionEvaulate();
+                Integer difference = -newChromoseome.getRosenbrockFunctionEvaluate() + chromosome.getRosenbrockFunctionEvaluate();
                 Double ratio = Double.valueOf(difference / temp);
                 Double exp = Math.exp(ratio);
 
@@ -93,9 +93,9 @@ public class SimulatedAnnealing
         return generator.nextDouble() < exp;
         }
 
-    private boolean newChromoseomeIsBetter(Chromosome newChromoseome, Chromosome chromosome)
+    private boolean newChromosomeIsBetter(Chromosome newChromosome, Chromosome chromosome)
         {
-        return newChromoseome.getRosenbrockFunctionEvaulate() < chromosome.getRosenbrockFunctionEvaulate();
+        return newChromosome.getRosenbrockFunctionEvaluate() < chromosome.getRosenbrockFunctionEvaluate();
         }
 
     private Integer randValueForChromosome()
@@ -121,14 +121,14 @@ public class SimulatedAnnealing
         Chromosome theBestChromosome = chromosomes.get(0);
         Integer evaulate;
 
-        evaulate = chromosomes.get(0).getRosenbrockFunctionEvaulate();
+        evaulate = chromosomes.get(0).getRosenbrockFunctionEvaluate();
 
 
         for (Chromosome chromosome : chromosomes)
             {
-            if (evaulate > chromosome.getRosenbrockFunctionEvaulate())
+            if (evaulate > chromosome.getRosenbrockFunctionEvaluate())
                 {
-                evaulate = chromosome.getRosenbrockFunctionEvaulate();
+                evaulate = chromosome.getRosenbrockFunctionEvaluate();
                 theBestChromosome = chromosome;
                 }
             }
@@ -137,7 +137,7 @@ public class SimulatedAnnealing
         return theBestChromosome;
         }
 
-    private void openConetionWithChart()
+    private void openConnectionWithChart()
         {
         try
             {
@@ -160,7 +160,7 @@ public class SimulatedAnnealing
         for (Chromosome chromosome : chromosomes)
 
             {
-            values.append(chromosome.getRosenbrockFunctionEvaulate().toString());
+            values.append(chromosome.getRosenbrockFunctionEvaluate().toString());
             values.append(";");
             }
 
@@ -170,7 +170,7 @@ public class SimulatedAnnealing
         writeToServer.println(values);
         }
 
-    private void offConetionWithChart()
+    private void offConnectionWithChart()
         {
         try
             {
