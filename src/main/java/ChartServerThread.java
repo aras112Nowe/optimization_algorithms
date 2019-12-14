@@ -55,6 +55,10 @@ public class ChartServerThread implements Runnable
             {
             algorithm = "Simulated Annealing";
             }
+        if (napis.equals("PSO"))
+            {
+            algorithm = "Pso algorithm";
+            }
 
         chart = QuickChart.getChart("Sample Chart", "Chromosoms", "Rosenbrock function evaulate", algorithm, tabX, tabY);
         swingWrapper = new SwingWrapper(chart).displayChart();

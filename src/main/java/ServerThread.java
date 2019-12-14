@@ -6,6 +6,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import pso.PSOAlgorithms;
+
 
 public class ServerThread implements Runnable
     {
@@ -60,6 +62,7 @@ public class ServerThread implements Runnable
                 simulatedAnnealing.exec();
                 geneticAlgorithm = new GeneticAlgorithm(list);
                 geneticAlgorithm.exec();
+                new PSOAlgorithms().execute("rPSO");
                 System.out.println("-----WYNIK----------------Genetic Algorithm:");
                 System.out.println(geneticAlgorithm.getTheBestChromosome());
                 System.out.println("-----WYNIK----------------Simulated Annealing:");
