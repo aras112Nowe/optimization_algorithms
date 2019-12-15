@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import differential.Differential;
 import pso.PSOAlgorithms;
 
 
@@ -63,6 +64,7 @@ public class ServerThread implements Runnable
                 geneticAlgorithm = new GeneticAlgorithm(list);
                 geneticAlgorithm.exec();
                 new PSOAlgorithms().execute("rPSO");
+                new Differential().run();
                 System.out.println("-----WYNIK----------------Genetic Algorithm:");
                 System.out.println(geneticAlgorithm.getTheBestChromosome());
                 System.out.println("-----WYNIK----------------Simulated Annealing:");

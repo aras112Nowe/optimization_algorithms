@@ -28,7 +28,7 @@ public class ChartServerThread implements Runnable
     double[] tabY = {0.0};
     double[] tabX = {0.0};
     JFrame swingWrapper;
-    private static Integer SLEEP_TIME = 100;
+    private static Integer SLEEP_TIME = 10;
     String algorithm;
 
 
@@ -57,7 +57,11 @@ public class ChartServerThread implements Runnable
             }
         if (napis.equals("PSO"))
             {
-            algorithm = "Pso algorithm";
+            algorithm = "Pso Algorithm";
+            }
+        if (napis.equals("Dif"))
+            {
+            algorithm = "Differential Evolution Algorithm";
             }
 
         chart = QuickChart.getChart("Sample Chart", "Chromosoms", "Rosenbrock function evaulate", algorithm, tabX, tabY);
@@ -98,14 +102,14 @@ public class ChartServerThread implements Runnable
             // swingWrapper = new SwingWrapper(chart).displayChart();
 
 
-            try
-                {
-                Thread.sleep(SLEEP_TIME);
-                }
-            catch (InterruptedException e)
-                {
-                e.printStackTrace();
-                }
+//            try
+//                {
+//                Thread.sleep(SLEEP_TIME);
+//                }
+//            catch (InterruptedException e)
+//                {
+//                e.printStackTrace();
+//                }
 
 
             }
